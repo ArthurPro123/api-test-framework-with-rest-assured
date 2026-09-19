@@ -1,5 +1,9 @@
 
-API Test Framework For Microservices
+# API Test Framework For Microservices
+
+
+[![Run API Tests](https://github.com/ArthurPro123/api-test-framework-with-rest-assured/actions/workflows/ci-test.yml/badge.svg)](https://github.com/ArthurPro123/api-test-framework-with-rest-assured/actions/workflows/ci-test.yml)
+
 
 A modular REST Assured framework for automating API tests across
 multiple microservices. Each service plugs in via its
