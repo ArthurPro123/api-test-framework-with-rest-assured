@@ -14,3 +14,4 @@ target/
 # Others
 private/
 tags
+vim_buffers.txt
