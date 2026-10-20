@@ -1,16 +1,17 @@
 package com.codesn.services.booking;
 
 import com.codesn.core.BaseApi;
+import com.codesn.services.booking.datatemplates.AuthPayload;
+import com.codesn.core.utils.TestLogger;
+import com.codesn.core.utils.WaitForService;
+
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
-import org.junit.jupiter.api.BeforeAll;
-
-import com.codesn.services.booking.datatemplates.AuthPayload;
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
-import com.codesn.core.utils.TestLogger;
-import com.codesn.core.utils.WaitForService;
+import org.junit.jupiter.api.BeforeAll;
+
 
 public abstract class BookingBaseApi extends BaseApi {
 

@@ -21,7 +21,7 @@ public class UserApiTestIT extends JsonPlaceholderBaseApi {
 
     @Test
     public void loggerPrintsPayload() {
-        TestLogger.log("Smoke Test", "{\"hello\":\"world\",\"n\":42}");
+        TestLogger.log("Smoke Test", "{\"user\":{\"id\":22,\"name\":\"Joe\",\"roles\":[\"qa\",\"dev\"],\"active\":true,\"nickname\":null}}");
     }
 
     @Test
@@ -43,11 +43,11 @@ public class UserApiTestIT extends JsonPlaceholderBaseApi {
     @Test
     public void testCreateUser() {
 
-        UserPayload requestBody = new UserPayload("John Doe", "john@example.com", "johndoe");
+        UserPayload userPayload = new UserPayload("John Doe", "john@example.com", "johndoe");
 
         given()
             .spec(REQUEST_SPEC)
-            .body(requestBody)
+            .body(userPayload)
         .when()
             .post("/users")
         .then()
@@ -59,11 +59,11 @@ public class UserApiTestIT extends JsonPlaceholderBaseApi {
     @Test
     public void testUpdateUser() {
 
-        UserPayload updateBody = new UserPayload("Updated Name", "updated@example.com", "johndoe");
+        UserPayload userPayload = new UserPayload("Updated Name", "updated@example.com", "johndoe");
 
         given()
             .spec(REQUEST_SPEC)
-            .body(updateBody)
+            .body(userPayload)
         .when()
             .put("/users/1")
         .then()
@@ -82,7 +82,7 @@ public class UserApiTestIT extends JsonPlaceholderBaseApi {
     }
 
     @Test
-    public void testGetUserWithQueryParameter() {
+    public void testGetPostsWithQueryParameter() {
         given()
             .spec(REQUEST_SPEC)
             .queryParam("userId", 1)
