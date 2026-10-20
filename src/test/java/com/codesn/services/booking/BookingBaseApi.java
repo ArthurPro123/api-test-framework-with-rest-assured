@@ -2,6 +2,7 @@ package com.codesn.services.booking;
 
 import com.codesn.core.BaseApi;
 import com.codesn.services.booking.datatemplates.AuthPayload;
+import com.codesn.services.booking.datatemplates.BookingPayload;
 import com.codesn.core.utils.TestLogger;
 import com.codesn.core.utils.WaitForService;
 
@@ -30,10 +31,10 @@ public abstract class BookingBaseApi extends BaseApi {
 
 
     protected RequestSpecification specWithAuth() {
-        return specWithAuthCookie(REQUEST_SPEC, "token", getToken());
+        return specWithAuthCookie(REQUEST_SPEC, "token", helperGetToken());
     }
 
-    private static String getToken() {
+    private static String helperGetToken() {
         if (cachedAuthToken == null) {
 
             AuthPayload credentialsPayload = new AuthPayload(
@@ -53,4 +54,17 @@ public abstract class BookingBaseApi extends BaseApi {
         }
         return cachedAuthToken;
     } 
+
+
+    protected static int helperCreateBooking(BookingPayload payload) {
+        return given()
+            .spec(REQUEST_SPEC)
+            .body(payload)
+        .when()
+            .post("/booking")
+        .then()
+            .extract()
+            .path("bookingid");
+    }
+
 }

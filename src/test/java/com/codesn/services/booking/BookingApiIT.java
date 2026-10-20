@@ -91,18 +91,7 @@ public class BookingApiIT extends BookingBaseApi {
         "Breakfast"
     );
 
-
-    int createdBookingId = given()
-        .spec(REQUEST_SPEC)
-        .body(bookingPayload)
-    .when()
-        .post("/booking")
-    .then()
-        .statusCode(200)
-        .body("bookingid", notNullValue())
-        .extract()
-        .path("bookingid");
-
+    int createdBookingId = helperCreateBooking(bookingPayload);
     
     given()
         .spec(specWithAuth())
